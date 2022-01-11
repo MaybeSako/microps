@@ -30,7 +30,7 @@ null_init(void)
 		return NULL;
 	}
 	dev->type = NET_DEVICE_TYPE_NULL;
-	dec->mtu = NULL_MTU;
+	dev->mtu = NULL_MTU;
 	dev->hlen = 0; /* non header */
 	dev->alen = 0; /* non address */
 	dev->ops = &null_ops;
