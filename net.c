@@ -22,6 +22,7 @@ net_device_alloc(void)
 	}
 	return dev;
 }
+
 /* NOTE: must not be call after net_run() */
 int
 net_device_register(struct net_device *dev)

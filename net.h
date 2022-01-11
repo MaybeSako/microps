@@ -37,7 +37,7 @@ struct net_device {
         uint8_t peer[NET_DEVICE_ADDR_LEN];
         uint8_t broadcast[NET_DEVICE_ADDR_LEN];
     };
-    struct net_device_ops *ops;
+    struct net_device_ops *ops; //デバイスドライバに実装されている関数が設定された struct net_device_ops へのポインタ
     void *priv;
 };
 
@@ -54,9 +54,8 @@ extern int
 net_device_register(struct net_device *dev);
 extern int
 net_device_output(struct net_device *dev, uint16_t type, const uint8_t *data, size_t len, const void *dst);
-
 extern int
-net_device_handler(uint16_t type, const uint8_t *data, size_t len, struct net_device *dev);
+net_input_handler(uint16_t type, const uint8_t *data, size_t len, struct net_device *dev);
 
 extern int
 net_run(void);

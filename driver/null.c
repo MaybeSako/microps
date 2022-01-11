@@ -16,7 +16,7 @@ null_transmit(struct net_device *dev, uint16_t type, const uint8_t *data, size_t
 }
 
 static struct net_device_ops null_ops = {
-	.transmit = null_transmit,
+	.transmit = null_transmit, //デバイスドライバが実装しているtransmit関数へのポインタを設定
 };
 
 struct net_device *
@@ -33,7 +33,7 @@ null_init(void)
 	dev->mtu = NULL_MTU;
 	dev->hlen = 0; /* non header */
 	dev->alen = 0; /* non address */
-	dev->ops = &null_ops;
+	dev->ops = &null_ops; //デバイスドライバに実装されている関数が設定された struct net_device_ops へのポインタ
 	if (net_device_register(dev) == -1) {
 		errorf("net_device_register() failure");
 		return NULL;
