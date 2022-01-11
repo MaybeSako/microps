@@ -32,11 +32,11 @@ main(int argc, char *argv[])
 	dev = null_init();
 	if(!dev) {
 		errorf("null_init() failrue");
-		return 01;
+		return -1;
 	}
 	if (net_run() == -1) {
 		errorf("null_init() failrue");
-		return 01;
+		return -1;
 	}
 	while (!terminate) {
 		if (net_device_output(dev, 0x0800, test_data, sizeof(test_data), NULL) == -1) {
